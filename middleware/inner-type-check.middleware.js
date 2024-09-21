@@ -5,11 +5,10 @@ class DataType {
   id;
   convertData() {
     try {
-      console.log("22: ", /^[a-zA-Z]+$/.test(this.name));
       if (
         typeof this.name !== "string" ||
-        !/^[a-zA-Z]+$/.test(this.name) ||
-        !/^[а-яА-Я]+$/.test(this.name)
+        (!/^[a-zA-Z]+$/.test(this.name) &&
+          !/^[а-яА-Я]+$/.test(this.name))
       ) {
         this.name = "Иван";
       }
@@ -20,8 +19,10 @@ class DataType {
 
       if (
         typeof this.sex !== "string" ||
-        this.sex !== "М" ||
-        this.sex !== "Ж"
+        (
+          this.sex !== "М" &&
+          this.sex !== "Ж"
+        )
       ) {
         this.sex = "М";
       }
